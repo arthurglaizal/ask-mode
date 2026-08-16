@@ -1,0 +1,6 @@
+interface:
+  display_name: "Ask Mode"
+  short_description: "Discuss code without changing anything."
+  default_prompt: "Use $ask to answer my codebase question without making changes."
+policy:
+  allow_implicit_invocation: false
