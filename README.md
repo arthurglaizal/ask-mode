@@ -60,28 +60,32 @@ Ask Mode uses each assistant's own extension mechanism. It does not replace nati
 Technical enforcement depends on the host tool.
 
 - Claude Code runs `/ask` in its built-in Explore subagent, which provides read-only tools. Because that subagent has isolated context, include the necessary context in your question.
-- Codex skills cannot declare a sandbox in `SKILL.md` or `agents/openai.yaml`. For an enforced local boundary, start Codex with `--sandbox read-only`; reject any request to leave that sandbox.
+- A Codex skill has no documented way to declare a sandbox in its own files. For an enforced local boundary, start Codex in its read-only sandbox; check `codex --help` for the current flag names.
 - Ask Mode can only inspect context the host tool is allowed to access.
 - Commands that might write files or caches are avoided.
 
 ## Install in Claude Code
 
-Claude Code now recommends skills for custom commands, so Ask Mode ships as [`.claude/skills/ask`](.claude/skills/ask).
+Claude Code recommends skills for custom commands, so Ask Mode ships as [`.claude/skills/ask`](.claude/skills/ask).
 
 ### Method 1: assisted installation (recommended)
 
-Paste [install-ask-for-claude-code.md](prompts-for-installation/install-ask-for-claude-code.md) into Claude Code and choose the global install to make `/ask` available in every project.
+Paste [install-ask-for-claude-code.md](prompts-for-installation/install-ask-for-claude-code.md) into Claude Code.
+
+The prompt does not hardcode a destination. It asks whether you want a personal or a project install, waits for your answer, checks the current Claude Code documentation and your installed version, then shows the resolved path before writing anything. That way it keeps working after Claude Code changes its folders or frontmatter fields.
 
 ### Method 2: manual installation
 
-Clone this repository, enter it, and link the skill globally:
+Clone this repository, enter it, and link the skill into your personal skills folder:
 
 ```sh
 mkdir -p "$HOME/.claude/skills"
 ln -s "$PWD/.claude/skills/ask" "$HOME/.claude/skills/ask"
 ```
 
-For a project-only install, copy `.claude/skills/ask` into the project's `.claude/skills/` folder. See the [Claude Code skills documentation](https://code.claude.com/docs/en/skills).
+For a project-only install, copy `.claude/skills/ask` into the project's `.claude/skills/` folder.
+
+These paths were correct when this README was written. If the skill does not show up, confirm the current locations in the [Claude Code skills documentation](https://code.claude.com/docs/en/skills), or use Method 1, which resolves them for you.
 
 ## Install in Codex
 
@@ -89,11 +93,13 @@ The Codex skill is in [`.agents/skills/ask`](.agents/skills/ask).
 
 ### Method 1: assisted installation (recommended)
 
-Paste [install-ask-for-codex.md](prompts-for-installation/install-ask-for-codex.md) into Codex and choose the global install to make `$ask` available in every project.
+Paste [install-ask-for-codex.md](prompts-for-installation/install-ask-for-codex.md) into Codex.
+
+The prompt does not hardcode a destination. It asks whether you want a personal or a project install, waits for your answer, checks the current Codex documentation and your installed version, then shows the resolved path before writing anything. This matters more for Codex than for Claude Code: the personal skills folder has moved between versions, and third-party guides still disagree about it. If several candidate folders exist on your machine, the prompt shows them and lets you choose.
 
 ### Method 2: manual installation
 
-Clone this repository, enter it, and link the skill globally:
+Clone this repository, enter it, and link the skill into your personal skills folder:
 
 ```sh
 mkdir -p "$HOME/.agents/skills"
@@ -102,17 +108,21 @@ ln -s "$PWD/.agents/skills/ask" "$HOME/.agents/skills/ask"
 
 For a project-only install, copy `.agents/skills/ask` into the project's `.agents/skills/` folder.
 
-For a stronger read-only boundary, launch Codex with:
+These paths were correct when this README was written, and Codex has used others in the past. If `$ask` does not show up, confirm the current locations in the [Codex skills documentation](https://learn.chatgpt.com/docs/build-skills), or use Method 1, which resolves them for you.
+
+For a stronger read-only boundary, start Codex in its read-only sandbox with approvals required. At the time of writing:
 
 ```sh
 codex --sandbox read-only --ask-for-approval untrusted
 ```
 
-Codex uses `$ask`, not a custom root slash command. See the [Codex skills](https://learn.chatgpt.com/docs/build-skills) and [sandbox](https://learn.chatgpt.com/docs/sandboxing) documentation.
+Check `codex --help` or the [sandbox documentation](https://learn.chatgpt.com/docs/sandboxing) if those flags have changed.
+
+Codex uses `$ask`, not a custom root slash command.
 
 ## Other AI coding assistants
 
-Paste [install-ask-for-any-ai.md](prompts-for-installation/install-ask-for-any-ai.md) into the target assistant. It selects the current native mechanism and states whether read-only behavior is technically enforced or instruction-based.
+Paste [install-ask-for-any-ai.md](prompts-for-installation/install-ask-for-any-ai.md) into the target assistant. Like the two prompts above, it inspects the environment first, asks for the scope, picks the assistant's current native mechanism rather than a deprecated one, and states whether read-only behavior is technically enforced or instruction-based.
 
 ## Regular AI chat
 
@@ -142,7 +152,9 @@ ask-mode/
 ├── prompts-for-ai-chat/
 │   └── ask-ai-chat-version.md
 └── public/
-    └── demo-script.md
+    ├── ask-mode.gif
+    ├── ask-mode.mp4
+    └── ask-mode.png
 ```
 
 ## More workflow commands
