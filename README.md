@@ -157,10 +157,15 @@ ask-mode/
     └── ask-mode.png
 ```
 
-## More workflow commands
+## More AI workflow commands
 
-- [WaitGo](https://github.com/arthurglaizal/wait-go) — Wait for all instructions before acting.
-- [Session Recap](https://github.com/arthurglaizal/session-recap) — See what happened and where the work stands.
+Small, portable commands for Claude Code, Codex, and any AI assistant.
+
+| Command | What it does |
+| --- | --- |
+| [WaitGo](https://github.com/arthurglaizal/wait-go) | Batches your instructions, then executes only when you say go. |
+| [Session Recap](https://github.com/arthurglaizal/session-recap) | Recaps what you did in the current session and what to pick up next. |
+| [Noob Command](https://github.com/arthurglaizal/noob-command) | Rewrites the last AI answer in simple, concise language. |
 
 ## Support
 
