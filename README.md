@@ -157,16 +157,17 @@ ask-mode/
     └── ask-mode.png
 ```
 
-## More AI workflow commands
+## More AI workflow skills
 
-Small, portable commands for Claude Code, Codex, and any AI assistant.
+Small, portable skills for Claude Code, Codex, and any AI assistant.
 
-| Command | What it does |
+| Skill | What it does |
 | --- | --- |
 | [WaitGo](https://github.com/arthurglaizal/wait-go) | Batches your instructions, then executes only when you say go. |
 | [Session Recap](https://github.com/arthurglaizal/session-recap) | Recaps what you did in the current session and what to pick up next. |
-| [Noob Command](https://github.com/arthurglaizal/noob-command) | Rewrites the last AI answer in simple, concise language. |
-| [FYI](https://github.com/arthurglaizal/fyi-command) | Gives your assistant context without giving it a task. |
+| [Noob](https://github.com/arthurglaizal/noob) | Rewrites the last AI answer in simple, concise language. |
+| [AI Handoff](https://github.com/arthurglaizal/ai-handoff) | Packages the current context so another AI can continue the work. |
+| [FYI](https://github.com/arthurglaizal/fyi) | Gives your assistant context without giving it a task. |
 
 ## Support
 
