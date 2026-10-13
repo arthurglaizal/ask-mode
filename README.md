@@ -168,6 +168,7 @@ Small, portable skills for Claude Code, Codex, and any AI assistant.
 | [Noob](https://github.com/arthurglaizal/noob) | Rewrites the last AI answer in simple, concise language. |
 | [AI Handoff](https://github.com/arthurglaizal/ai-handoff) | Packages the current context so another AI can continue the work. |
 | [FYI](https://github.com/arthurglaizal/fyi) | Gives your assistant context without giving it a task. |
+| [Lazy](https://github.com/arthurglaizal/lazy) | Does what the assistant just suggested, instead of explaining it. |
 
 ## Support
 
